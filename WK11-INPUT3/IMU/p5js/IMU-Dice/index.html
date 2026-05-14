@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMU Dice Shaker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="panel">
+        <h1>IMU Dice Shaker</h1>
+        <p>센서를 흔들면 주사위가 굴러갑니다.</p>
+        <div class="actions">
+          <button id="connectBtn">IMU 연결</button>
+          <button id="simBtn" class="alt">시뮬레이션</button>
+          <button id="rollBtn" class="alt">수동 굴리기</button>
+          <span id="status">대기</span>
+        </div>
+        <div class="meter-wrap">
+          <label>흔들림 강도</label>
+          <div class="meter"><div id="shakeFill"></div></div>
+        </div>
+      </header>
+      <section id="canvasHolder" class="panel canvas-panel"></section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cannon@0.6.2/build/cannon.min.js"></script>
+    <script src="sketch.js"></script>
+  </body>
+</html>
