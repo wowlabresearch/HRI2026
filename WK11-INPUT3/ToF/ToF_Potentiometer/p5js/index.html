@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pot + ToF Audio Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/addons/p5.sound.min.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="panel">
+      <h1>POT + TOF PLAYER</h1>
+      <p class="subtitle">A1 potentiometer bends pitch, VL53L0X distance sculpts filter frequency</p>
+
+      <div class="controls">
+        <button id="connectBtn" type="button">Connect Serial</button>
+        <button id="enableBtn" type="button">Start Audio</button>
+        <button id="stopBtn" type="button" disabled>Stop Audio</button>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <span class="label">Pot Value</span>
+          <span id="potValue" class="value">--</span>
+        </div>
+        <div class="metric">
+          <span class="label">Distance</span>
+          <span id="distanceValue" class="value">-- mm</span>
+        </div>
+        <div class="metric">
+          <span class="label">Pitch Bend</span>
+          <span id="pitchValue" class="value">0 st</span>
+        </div>
+        <div class="metric">
+          <span class="label">Filter Cutoff</span>
+          <span id="filterValue" class="value">-- Hz</span>
+        </div>
+        <div class="metric">
+          <span class="label">Resonance</span>
+          <span id="resValue" class="value">--</span>
+        </div>
+        <div class="metric">
+          <span class="label">Wobble</span>
+          <span id="wobbleValue" class="value">-- Hz</span>
+        </div>
+        <div class="metric wide">
+          <span class="label">Status</span>
+          <span id="statusValue" class="value">Idle</span>
+        </div>
+      </div>
+
+      <p class="hint">Run on localhost in Web browser. Connect serial, then start internal synth audio.</p>
+    </section>
+
+    <section class="stage">
+      <div id="sketch-root"></div>
+    </section>
+  </main>
+
+  <script src="sketch.js?v=20260514b"></script>
+</body>
+</html>
