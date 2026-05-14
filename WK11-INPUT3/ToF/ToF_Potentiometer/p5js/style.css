@@ -1,0 +1,165 @@
+:root {
+  --bg0: #140b14;
+  --bg1: #22303e;
+  --bg2: #1e4f57;
+  --panel: rgba(9, 17, 21, 0.76);
+  --line: rgba(196, 244, 255, 0.18);
+  --text: #f4fbff;
+  --accent: #ffd37a;
+  --accent-2: #85f6de;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 211, 122, 0.2), transparent 24%),
+    radial-gradient(circle at 82% 74%, rgba(133, 246, 222, 0.16), transparent 28%),
+    linear-gradient(136deg, var(--bg0), var(--bg1) 44%, var(--bg2));
+}
+
+.shell {
+  width: min(1180px, 92vw);
+  margin: 28px auto;
+  display: grid;
+  grid-template-columns: 390px 1fr;
+  gap: 14px;
+}
+
+.panel,
+.stage {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+}
+
+.panel {
+  padding: 22px;
+}
+
+.stage {
+  min-height: 620px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Syne", sans-serif;
+  letter-spacing: 0.05em;
+  font-size: clamp(1.7rem, 3.3vw, 2.5rem);
+}
+
+.subtitle {
+  margin: 9px 0 18px;
+  opacity: 0.85;
+  line-height: 1.45;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 15px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  color: #081217;
+  background: linear-gradient(135deg, var(--accent), #ff8b68);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.file-pick {
+  margin-bottom: 14px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.file-pick label {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.74;
+  margin-bottom: 8px;
+}
+
+.file-pick input {
+  width: 100%;
+  color: var(--text);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.metric {
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.metric.wide {
+  grid-column: span 2;
+}
+
+.label {
+  display: block;
+  font-size: 0.73rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.68;
+}
+
+.value {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.14rem;
+  font-weight: 700;
+}
+
+.hint {
+  margin-top: 14px;
+  opacity: 0.78;
+  line-height: 1.45;
+}
+
+#sketch-root canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 960px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .stage {
+    min-height: 480px;
+  }
+}
