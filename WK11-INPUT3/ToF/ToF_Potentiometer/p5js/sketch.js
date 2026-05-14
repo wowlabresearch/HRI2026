@@ -190,12 +190,18 @@ function drawSignalLine() {
   textSize(14);
   text("Potentiometer -> pitch bend", 42, 18);
   text("Distance sensor -> cutoff + resonance + wobble", 42, 38);
+  text("[p5 editor] C=serial  E=audio  S=stop", 42, 58);
 }
 
 function wireButtons() {
   const connectBtn = document.getElementById("connectBtn");
   const enableBtn = document.getElementById("enableBtn");
   const stopBtn = document.getElementById("stopBtn");
+
+  if (!connectBtn || !enableBtn || !stopBtn) {
+    setStatus("p5 editor mode: use keys C=connect, E=enable, S=stop");
+    return;
+  }
 
   connectBtn.addEventListener("click", async () => {
     if (!("serial" in navigator)) {
@@ -248,14 +254,19 @@ async function connectSerial() {
   });
 
   reader = decoder.readable.getReader();
-  readSerialLoop();
+  readSerialOnce();
 }
 
-async function readSerialLoop() {
-  while (reader) {
+async function readSerialOnce() {
+  if (!reader) {
+    return;
+  }
+
+  try {
     const { value, done } = await reader.read();
     if (done) {
-      break;
+      reader = null;
+      return;
     }
 
     if (value) {
@@ -264,7 +275,13 @@ async function readSerialLoop() {
       serialBuffer = lines.pop() || "";
       lines.forEach(parseSensorLine);
     }
+  } catch (error) {
+    setStatus(`Serial read error: ${error.message}`);
+    reader = null;
+    return;
   }
+
+  readSerialOnce();
 }
 
 function parseSensorLine(line) {
@@ -298,4 +315,44 @@ function parseSensorLine(line) {
   if (Number.isFinite(distanceOnly) && distanceOnly > 0 && distanceOnly < 5000) {
     targetDistance = distanceOnly;
   }
+}
+
+function keyPressed() {
+  const key = String.fromCharCode(keyCode).toUpperCase();
+  
+  if (key === "C" && !serialPort) {
+    setStatus("Opening serial (p5 editor mode)...");
+    connectSerial().then(() => {
+      setStatus("Serial connected ✓");
+    }).catch((error) => {
+      setStatus(`Serial failed: ${error.message}`);
+    });
+    return false;
+  }
+
+  if (key === "E" && serialPort && !audioRunning) {
+    setStatus("Starting audio (p5 editor mode)...");
+    userStartAudio().then(() => {
+      if (!synthStarted) {
+        synthOsc.start();
+        synthStarted = true;
+      }
+      audioRunning = true;
+      setStatus("Audio running ✓ | Press S to stop");
+    }).catch((error) => {
+      setStatus(`Audio failed: ${error.message}`);
+    });
+    return false;
+  }
+
+  if (key === "S" && audioRunning) {
+    if (synthOsc) {
+      synthOsc.amp(0, 0.08);
+    }
+    audioRunning = false;
+    setStatus("Audio stopped | Press E to enable");
+    return false;
+  }
+
+  return true;
 }
