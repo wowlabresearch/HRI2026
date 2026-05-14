@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MPU6500 3D Cube Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+  </head>
+  <body>
+    <div class="bg-noise"></div>
+
+    <header class="top-bar">
+      <h1>MPU6500 Web Serial Visualizer</h1>
+      <p>ESP32S3 + Web Serial + p5.js WEBGL</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls">
+        <h2>Serial Control</h2>
+        <button id="connectBtn" class="btn">Connect Serial</button>
+        <button id="disconnectBtn" class="btn btn-alt" disabled>Disconnect</button>
+        <div id="status" class="status">상태: 대기 중</div>
+      </section>
+
+      <section class="panel values">
+        <h2>Live Data</h2>
+        <pre id="telemetry">연결 후 데이터 수신 대기...</pre>
+      </section>
+
+      <section class="panel canvas-panel">
+        <h2>3D Orientation Cube</h2>
+        <div class="canvas-wrap">
+          <div id="canvas-holder"></div>
+          <div class="axis-legend" aria-label="Axis legend">
+            <span class="axis-chip axis-x">X</span>
+            <span class="axis-chip axis-y">Y</span>
+            <span class="axis-chip axis-z">Z</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
