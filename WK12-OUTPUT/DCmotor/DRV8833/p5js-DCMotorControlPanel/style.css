@@ -1,29 +1,135 @@
 :root {
-  --bg-a: #f5fbff;
-  --bg-b: #eef6f0;
-  --ink: #1f2a37;
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --text: #182230;
+  --muted: #5a6a7f;
+  --line: #d9e0ea;
+  --primary: #1f6feb;
+  --primary-dark: #0f4fb8;
+  --forward: #0f9d58;
+  --reverse: #fb8c00;
+  --stop: #d93025;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html,
 body {
   margin: 0;
-  min-height: 100%;
-
-  color: var(--ink);
-  font-family: "Pretendard", "Noto Sans KR", "Segoe UI", sans-serif;
-}
-
-body {
-  display: grid;
-  place-items: center;
   padding: 20px;
+  background: radial-gradient(circle at top left, #eef4ff 0%, var(--bg) 45%, #f2f5f9 100%);
+  color: var(--text);
+  font-family: "Segoe UI", "Noto Sans", sans-serif;
 }
 
-canvas {
+#app {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 18px;
+  border: 1px solid var(--line);
   border-radius: 14px;
-  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.1);
+  background: var(--card);
+  box-shadow: 0 12px 32px rgba(16, 24, 40, 0.08);
+}
+
+h2 {
+  margin: 0 0 10px 0;
+  letter-spacing: 0.2px;
+}
+
+h4 {
+  margin: 16px 0 8px 0;
+  color: var(--muted);
+}
+
+.status-label {
+  margin: 0 0 10px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.btn {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 120ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-forward {
+  border-color: #bfe7d3;
+  background: #ecfbf3;
+  color: #0d7b45;
+}
+
+.btn-reverse {
+  border-color: #ffd7a8;
+  background: #fff6ea;
+  color: #a45a00;
+}
+
+.btn-stop {
+  border-color: #f4b5b1;
+  background: #fff0ef;
+  color: #b91c1c;
+}
+
+.speed-row {
+  margin-top: 14px;
+}
+
+.speed-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.speed-slider {
+  width: 100%;
+}
+
+#log-box {
+  height: 220px;
+  overflow: auto;
+  background: #f4f7fb;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  color: #1f2937;
+  font-size: 13px;
+}
+
+#graph-caption {
+  margin: 0 0 8px 0;
+  color: var(--muted);
+}
+
+#pwm-canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  border: 1px solid var(--line);
+  border-radius: 10px;
 }
