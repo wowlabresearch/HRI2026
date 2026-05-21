@@ -1,5 +1,5 @@
 # p5.js PWM Sync Workspace
-(ENG)--------
+(ENG)
 
 This folder visualizes the PWM behavior and timing in sync with `src/main.cpp`.
 
@@ -43,7 +43,7 @@ Notes:
 - `index.html` and `style.css` are provided for local preview.
 
 
-(KOR)--------
+(KOR)
 이 폴더는 `src/main.cpp`의 PWM 동작과 시간축을 동기화해서 시각화합니다.
 
 ## 동기화 기준 (펌웨어와 동일)
