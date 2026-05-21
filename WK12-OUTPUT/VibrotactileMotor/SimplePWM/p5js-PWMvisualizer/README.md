@@ -41,7 +41,7 @@ Notes:
 ## For the p5.js Web Editor
 - You can copy the contents of this folder's `sketch.js` directly into a p5.js Web Editor sketch.
 - `index.html` and `style.css` are provided for local preview.
-
+- OR, directly access to this: https://editor.p5js.org/yun_choi/sketches/ndlqV4leB
 
 (KOR 🇰🇷)
 
@@ -85,3 +85,4 @@ Notes:
 ## p5.js 웹 에디터용
 - 이 폴더의 `sketch.js` 내용을 p5.js Web Editor의 스케치에 그대로 붙여넣으면 됩니다.
 - `index.html`/`style.css`는 로컬 확인용입니다.
+- - OR, directly access to this: https://editor.p5js.org/yun_choi/sketches/ndlqV4leB
