@@ -1,4 +1,4 @@
-#OLED 
+# OLED spec
 - 128x64 pixel (0.96 inch)
 - I2C
 
