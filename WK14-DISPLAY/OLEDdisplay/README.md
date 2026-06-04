@@ -2,7 +2,7 @@
 - 128x64 pixel (0.96 inch)
 - I2C
 
-# p5.js Web Editor sketch (https://editor.p5js.org/yun_choi/sketches/zjzcGkg__)
+# p5.js Web Editor sketch (https://editor.p5js.org/yun_choi/sketches/zjzcGkg__ )
 
 1. `web-p5-editor/sketch.js` 전체를 p5.js Web Editor의 `sketch.js`에 붙여넣기
 2. 보드에 업로드 후 BLE 광고 이름 `ESP32S3-OLED` 확인
